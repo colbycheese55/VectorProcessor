@@ -6,7 +6,7 @@ The ”vector_converter3D” can only convert between different vector formats, 
 
 
 
-Supported Vector Formats:
+Supported Vector Formats and Other Notes:
 
 - note: for 2D vectors enter [magnitude z] [e z] [distance z] and [phi] as 0, enter [theta z] as 90
 
@@ -14,11 +14,11 @@ Supported Vector Formats:
 
 - Cartesian Coordinates: [magnitude x]i + [magnitude y]j + [magnitude z]k ::: ex. 100i+200j+-300k
 
--- note: even if it means typing "+-" you must separate values by a plus sign
+  -- note: even if it means typing "+-" you must separate values by a plus sign
 
 - Unit Vector: [magnitude]e where e=[e x]i+[e y]j+[e z]k ::: ex. 200e where e=0.6i+0.5j+0.3k
 
--- note: even if it means typing "+-" you must separate values by a plus sign
+  -- note: even if it means typing "+-" you must separate values by a plus sign
 
 - Theta and Phi: [magnitude], [theta], [phi] ::: ex. 100, 45, 10
 
