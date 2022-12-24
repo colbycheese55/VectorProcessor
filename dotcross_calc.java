@@ -9,7 +9,7 @@ public class dotcross_calc {
         String vector2 = scan.nextLine().replace(" ", "");
         
         double[] dot = dot(vector1, vector2);
-        System.out.println("\n\nDot (1Scalar) Product Results:");
+        System.out.println("\n\nDot (Scalar) Product Results:");
         System.out.println("Scalar value: "+vector_converter3D.truncate(dot[0], 3));
         System.out.println("Angle: "+vector_converter3D.truncate(dot[1], 2));
         
