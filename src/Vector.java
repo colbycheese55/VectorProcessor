@@ -5,38 +5,56 @@ public class Vector {
     double x, y, z;
 
     public Vector(String in) {
-        String code = in.substring(0, in.indexOf(" "));
-        double[] values = values_helper(in.substring(in.indexOf(" ")));
-        values = dimensional_checker(code, values);
-        switch (code) {
+        String[] contents = in.split("\s", 2);
+        String vectorFormat = contents[0];
+        if (contents.length != 2 || vectorFormat.length() == 0) {
+            System.out.println("\nERROR: NO FORMAT CODE GIVEN. THIS ENTRY WAS DISREGARDED");
+            return;
+        }
+        double[] values = values_helper(contents[1]);
+        values = dimensional_checker(vectorFormat, values);
+        switch (vectorFormat) { //TODO: rename codes
             case "cart":
                 x = values[0];
                 y = values[1];
                 z = values[2];
                 break;
-            case "pol":
+            case "pol": 
+                if (values[1] < 0 || values[1] > 180 || values[2] < 0 || values[2] > 180 || values[3] < 0 || values[3] > 180) {
+                    System.out.println("ERROR: THETA SHOULD BE BETWEEN 0 AND 180 (INCLUSIVE). THIS ENTRY WAS DISREGARDED\n");
+                    return;
+                }
                 x = values[0]*Math.cos(Math.toRadians(values[1]));
                 y = values[0]*Math.cos(Math.toRadians(values[2]));
                 z = values[0]*Math.cos(Math.toRadians(values[3]));
                 break;
-            case "unit":
+            case "unit": 
+                Vector unitVector = new Vector(values[1], values[2], values[3]);
+                if (unitVector.getMag() > 1.05 || unitVector.getMag() < 0.95) {
+                    System.out.println("\nERROR: UNIT VECTOR MAGNITUDE IS NOT 1. THIS ENTRY WAS DISREGARDED\n");
+                    return;
+                }
                 x = values[0]*values[1];
                 y = values[0]*values[2];
                 z = values[0]*values[3];
                 break;
             case "tp":
+                if (values[2] < -90 || values[2] > 90) {
+                    System.out.println("ERROR: PHI SHOULD BE BETWEEN -90 AND 90 (INCLUSIVE). THIS ENTRY WAS DISREGARDED\n");
+                    return;
+                }
                 x = values[0]*Math.cos(Math.toRadians(values[1]))*Math.cos(Math.toRadians(values[2]));
                 y = values[0]*Math.sin(Math.toRadians(values[1]))*Math.cos(Math.toRadians(values[2]));
                 z = values[0]*Math.sin(Math.toRadians(values[2]));
                 break;
             case "dir":
-                double r = Math.sqrt(Math.pow(values[1], 2) + Math.pow(values[2], 2) + Math.pow(values[3], 2));
+                double r = (new Vector(values[1], values[2], values[3])).getMag();
                 x = values[0]*values[1]/r;
                 y = values[0]*values[2]/r;
                 z = values[0]*values[3]/r;
                 break;
             default:
-                System.out.println("\nERROR: UNKNOWN OR NO FORMAT CODE. THIS ENTRY WAS DISREGARDED\n");
+                System.out.println("\nERROR: UNKNOWN FORMAT CODE. THIS ENTRY WAS DISREGARDED\n");
         }
     }
     public Vector(double x, double y, double z) {
@@ -50,16 +68,16 @@ public class Vector {
     public double getZ() {return z;}
     public double getMag() {return Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2)+Math.pow(z, 2));}
 
-    public String toString() {        
+    public String toString() {
         double r = getMag();
-        double endtheta_x = truncate(Math.toDegrees(Math.acos(x/r)));
-        double endtheta_y = truncate(Math.toDegrees(Math.acos(y/r)));
-        double endtheta_z = truncate(Math.toDegrees(Math.acos(z/r)));
+        double theta_x = round(Math.toDegrees(Math.acos(x/r)));
+        double theta_y = round(Math.toDegrees(Math.acos(y/r)));
+        double theta_z = round(Math.toDegrees(Math.acos(z/r)));
 
         return "\nResults: \n"+
-        "Cartesian Coords: "+truncate(x)+"i + "+truncate(y)+"j + "+truncate(z)+"k \n"+
-        "Polar Coords: "+truncate(r)+", "+endtheta_x+", "+endtheta_y+", "+endtheta_z+"\n"+
-        "Unit Vector: "+truncate(r)+"e, where e is "+truncate(x/r)+"i + "+truncate(y/r)+"j + "+truncate(z/r)+"k";
+        "Cartesian Coords: "+round(x)+"i + "+round(y)+"j + "+round(z)+"k \n"+
+        "Polar Coords: "+round(r)+", "+theta_x+", "+theta_y+", "+theta_z+"\n"+
+        "Unit Vector: "+round(r)+"e, where e is "+round(x/r)+"i + "+round(y/r)+"j + "+round(z/r)+"k";
     }
 
     private double[] values_helper(String input) {
@@ -70,17 +88,17 @@ public class Vector {
         }
         return values;
     }
-    private double truncate(double val) {
-        int place = 4;
+    private double round(double val) {
+        final int place = 4;
         return Math.floor(val*Math.pow(10, place)+0.5*Math.pow(10, -place))/Math.pow(10, place);
     }
     private double[] dimensional_checker(String code, double[] in) {
         if ((code.equals("cart") || code.equals("tp")) && !(in.length == 2 || in.length == 3)) {
-            System.out.println("\nERROR: INCORRECT NUMBER OF COMPONENTS FOR THIS FORMAT. THIS ENTRY WAS DISREGARDED\n");
+            System.out.println("\nERROR: INCORRECT NUMBER OF COMPONENTS FOR THIS FORMAT. 2 (2D) OR 3 (3D) ARE EXPECTED. THIS ENTRY WAS DISREGARDED\n");
             return new double[4];
         }
-        if ((code.equals("pol") || code.equals("dir")) && !(in.length == 3 || in.length == 4)) {
-            System.out.println("\nERROR: INCORRECT NUMBER OF COMPONENTS FOR THIS FORMAT. THIS ENTRY WAS DISREGARDED\n");
+        if ((code.equals("pol") || code.equals("dir") || code.equals("unit")) && !(in.length == 3 || in.length == 4)) {
+            System.out.println("\nERROR: INCORRECT NUMBER OF COMPONENTS FOR THIS FORMAT. 3 (2D) OR 4 (3D) ARE EXPECTED. THIS ENTRY WAS DISREGARDED\n");
             return new double[4];
         }
         double[] out = Arrays.copyOf(in, in.length+1);
