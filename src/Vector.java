@@ -76,7 +76,7 @@ public class Vector {
 
         return "\nResults: \n"+
         "Cartesian Coords: "+round(x)+"i + "+round(y)+"j + "+round(z)+"k \n"+
-        "Relative Polar Coords: Magnitude is "+round(r)+"; \u03B8 is "+thetaX+", "+thetaY+", "+thetaZ+"\n"+
+        "Relative Polar Coords: Magnitude is "+round(r)+"; \u0398 is "+thetaX+", "+thetaY+", "+thetaZ+"\n"+
         "Unit Vector: "+round(r)+"e, where e is "+round(x/r)+"i + "+round(y/r)+"j + "+round(z/r)+"k";
     }
 
@@ -89,8 +89,8 @@ public class Vector {
         return values;
     }
     public static double round(double val) {
-        final int place = 4;
-        return Math.floor(val*Math.pow(10, place)+0.5*Math.pow(10, -place))/Math.pow(10, place);
+        final int decomalPlace = 4;
+        return Math.round(val*Math.pow(10, decomalPlace)) / Math.pow(10, decomalPlace);
     }
     private static double[] dimensional_checker(String code, double[] in) {
         if ((code.equals("cart") || code.equals("ap")) && !(in.length == 2 || in.length == 3)) {
@@ -101,7 +101,7 @@ public class Vector {
             System.out.println("\nERROR: INCORRECT NUMBER OF COMPONENTS FOR THIS FORMAT. 3 (2D) OR 4 (3D) ARE EXPECTED. THIS ENTRY WAS DISREGARDED\n");
             return new double[4];
         }
-        double[] out = Arrays.copyOf(in, in.length+1);
-        return out;
+        
+        return Arrays.copyOf(in, in.length+1);
     }
 }

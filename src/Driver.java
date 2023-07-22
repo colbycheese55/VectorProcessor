@@ -26,7 +26,7 @@ public class Driver {
                 scan.close();
                 return;
         }
-        System.out.println("\nTo run again, enter nothing. To stop, enter anything characters or close this window");
+        System.out.println("\nTo run again, enter nothing. To stop, enter any characters or close this window");
         if (scan.nextLine().equals(""))
             main(args);
         scan.close();
