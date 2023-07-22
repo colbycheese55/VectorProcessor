@@ -8,7 +8,7 @@ public class Vector {
         String[] contents = in.split("\s", 2);
         String vectorFormat = contents[0];
         if (contents.length != 2 || vectorFormat.length() == 0) {
-            System.out.println("\nERROR: NO FORMAT CODE GIVEN. THIS ENTRY WAS DISREGARDED");
+            System.out.println("\nERROR: NO FORMAT CODE GIVEN. THIS ENTRY WAS DISREGARDED\n");
             return;
         }
         double[] values = values_helper(contents[1]);
@@ -19,9 +19,9 @@ public class Vector {
                 y = values[1];
                 z = values[2];
                 break;
-            case "rp": //TODO: check this math
+            case "rp":
                 if (values[1] < 0 || values[1] > 180 || values[2] < 0 || values[2] > 180 || values[3] < 0 || values[3] > 180) {
-                    System.out.println("ERROR: THETA SHOULD BE BETWEEN 0 AND 180 (INCLUSIVE). THIS ENTRY WAS DISREGARDED\n");
+                    System.out.println("\nERROR: THETA SHOULD BE BETWEEN 0 AND 180 (INCLUSIVE). THIS ENTRY WAS DISREGARDED\n");
                     return;
                 }
                 x = values[0]*Math.cos(Math.toRadians(values[1]));
@@ -40,7 +40,7 @@ public class Vector {
                 break;
             case "ap":
                 if (values[2] < -90 || values[2] > 90) {
-                    System.out.println("ERROR: PHI SHOULD BE BETWEEN -90 AND 90 (INCLUSIVE). THIS ENTRY WAS DISREGARDED\n");
+                    System.out.println("\nERROR: PHI SHOULD BE BETWEEN -90 AND 90 (INCLUSIVE). THIS ENTRY WAS DISREGARDED\n");
                     return;
                 }
                 x = values[0]*Math.cos(Math.toRadians(values[1]))*Math.cos(Math.toRadians(values[2]));
@@ -70,13 +70,13 @@ public class Vector {
 
     public String toString() {
         double r = getMag();
-        double theta_x = round(Math.toDegrees(Math.acos(x/r)));
-        double theta_y = round(Math.toDegrees(Math.acos(y/r)));
-        double theta_z = round(Math.toDegrees(Math.acos(z/r)));
+        double thetaX = round(Math.toDegrees(Math.acos(x/r)));
+        double thetaY = round(Math.toDegrees(Math.acos(y/r)));
+        double thetaZ = round(Math.toDegrees(Math.acos(z/r)));
 
         return "\nResults: \n"+
         "Cartesian Coords: "+round(x)+"i + "+round(y)+"j + "+round(z)+"k \n"+
-        "Polar Coords: "+round(r)+", "+theta_x+", "+theta_y+", "+theta_z+"\n"+
+        "Relative Polar Coords: Magnitude is "+round(r)+"; \u03B8 is "+thetaX+", "+thetaY+", "+thetaZ+"\n"+
         "Unit Vector: "+round(r)+"e, where e is "+round(x/r)+"i + "+round(y/r)+"j + "+round(z/r)+"k";
     }
 
