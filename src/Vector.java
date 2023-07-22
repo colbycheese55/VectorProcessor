@@ -13,13 +13,13 @@ public class Vector {
         }
         double[] values = values_helper(contents[1]);
         values = dimensional_checker(vectorFormat, values);
-        switch (vectorFormat) { //TODO: rename codes
+        switch (vectorFormat) { 
             case "cart":
                 x = values[0];
                 y = values[1];
                 z = values[2];
                 break;
-            case "pol": 
+            case "rp": //TODO: check this math
                 if (values[1] < 0 || values[1] > 180 || values[2] < 0 || values[2] > 180 || values[3] < 0 || values[3] > 180) {
                     System.out.println("ERROR: THETA SHOULD BE BETWEEN 0 AND 180 (INCLUSIVE). THIS ENTRY WAS DISREGARDED\n");
                     return;
@@ -38,7 +38,7 @@ public class Vector {
                 y = values[0]*values[2];
                 z = values[0]*values[3];
                 break;
-            case "tp":
+            case "ap":
                 if (values[2] < -90 || values[2] > 90) {
                     System.out.println("ERROR: PHI SHOULD BE BETWEEN -90 AND 90 (INCLUSIVE). THIS ENTRY WAS DISREGARDED\n");
                     return;
@@ -80,7 +80,7 @@ public class Vector {
         "Unit Vector: "+round(r)+"e, where e is "+round(x/r)+"i + "+round(y/r)+"j + "+round(z/r)+"k";
     }
 
-    private double[] values_helper(String input) {
+    private static double[] values_helper(String input) {
         String[] pieces = input.split(",");
         double[] values = new double[pieces.length];
         for (int i = 0; i < pieces.length; i++) {
@@ -88,16 +88,16 @@ public class Vector {
         }
         return values;
     }
-    private double round(double val) {
+    public static double round(double val) {
         final int place = 4;
         return Math.floor(val*Math.pow(10, place)+0.5*Math.pow(10, -place))/Math.pow(10, place);
     }
-    private double[] dimensional_checker(String code, double[] in) {
-        if ((code.equals("cart") || code.equals("tp")) && !(in.length == 2 || in.length == 3)) {
+    private static double[] dimensional_checker(String code, double[] in) {
+        if ((code.equals("cart") || code.equals("ap")) && !(in.length == 2 || in.length == 3)) {
             System.out.println("\nERROR: INCORRECT NUMBER OF COMPONENTS FOR THIS FORMAT. 2 (2D) OR 3 (3D) ARE EXPECTED. THIS ENTRY WAS DISREGARDED\n");
             return new double[4];
         }
-        if ((code.equals("pol") || code.equals("dir") || code.equals("unit")) && !(in.length == 3 || in.length == 4)) {
+        if ((code.equals("rp") || code.equals("dir") || code.equals("unit")) && !(in.length == 3 || in.length == 4)) {
             System.out.println("\nERROR: INCORRECT NUMBER OF COMPONENTS FOR THIS FORMAT. 3 (2D) OR 4 (3D) ARE EXPECTED. THIS ENTRY WAS DISREGARDED\n");
             return new double[4];
         }
