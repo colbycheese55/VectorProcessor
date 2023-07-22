@@ -5,7 +5,7 @@ public class Vector {
 
     public Vector(String in) {
         String code = in.substring(0, in.indexOf(" "));
-        double[] values = valuesHelper(in.substring(in.indexOf(" ")));
+        double[] values = values_helper(in.substring(in.indexOf(" ")));
         values = dimensional_checker(code, values);
         switch (code) {
             case "cart":
@@ -47,20 +47,21 @@ public class Vector {
     public double getX() {return x;}
     public double getY() {return y;}
     public double getZ() {return z;}
+    public double getMag() {return Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2)+Math.pow(z, 2));}
 
     public String toString() {        
-        double r = Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2)+Math.pow(z, 2));
+        double r = getMag();
         double endtheta_x = truncate(Math.toDegrees(Math.acos(x/r)));
         double endtheta_y = truncate(Math.toDegrees(Math.acos(y/r)));
         double endtheta_z = truncate(Math.toDegrees(Math.acos(z/r)));
 
-        return "Results: \n"+
+        return "\nResults: \n"+
         "Cartesian Coords: "+truncate(x)+"i + "+truncate(y)+"j + "+truncate(z)+"k \n"+
         "Polar Coords: "+truncate(r)+", "+endtheta_x+", "+endtheta_y+", "+endtheta_z+"\n"+
         "Unit Vector: "+truncate(r)+"e, where e is "+truncate(x/r)+"i + "+truncate(y/r)+"j + "+truncate(z/r)+"k";
     }
 
-    private double[] valuesHelper(String input) {
+    private double[] values_helper(String input) {
         String[] pieces = input.split(",");
         double[] values = new double[pieces.length];
         for (int i = 0; i < pieces.length; i++) {
