@@ -2,7 +2,7 @@ package src;
 import java.util.Arrays;
 
 public class Vector {
-    double x, y, z;
+    private double x, y, z;
 
     public Vector(String in) {
         String[] contents = in.split("\s", 2);
@@ -83,14 +83,19 @@ public class Vector {
     private static double[] values_helper(String input) {
         String[] pieces = input.split(",");
         double[] values = new double[pieces.length];
-        for (int i = 0; i < pieces.length; i++) {
-            values[i] = Double.valueOf(pieces[i]);
+        try {
+            for (int i = 0; i < pieces.length; i++) {
+                values[i] = Double.valueOf(pieces[i]);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("\nERROR: NON NUMERICAL CHARACTERS WERE INPUT AS VECTOR COMPONENTS OR INVALID USE OF COMMAS. THIS ENTRY WAS DISREGARDED\n");
+            return new double[3];
         }
         return values;
     }
     public static double round(double val) {
-        final int decomalPlace = 4;
-        return Math.round(val*Math.pow(10, decomalPlace)) / Math.pow(10, decomalPlace);
+        final int decimalPlace = 4;
+        return Math.round(val*Math.pow(10, decimalPlace)) / Math.pow(10, decimalPlace);
     }
     private static double[] dimensional_checker(String code, double[] in) {
         if ((code.equals("cart") || code.equals("ap")) && !(in.length == 2 || in.length == 3)) {
