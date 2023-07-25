@@ -4,10 +4,10 @@ import java.util.Scanner;
 public class Driver {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter the number for your desired operation: ");
-        System.out.println("(1) Converter, (2) Adder, (3) Cross Product, (4) Dot Product");
+        System.out.println("Enter the number for your desired operation: \n(1) Converter, (2) Adder, (3) Cross Product, (4) Dot Product");
         String option = scan.nextLine().replace(" ", "");
-        switch (option) {
+        while (!option.equals("5")) {
+            switch (option) {
             case "1":
                 converterMode(scan);
                 break;
@@ -21,14 +21,11 @@ public class Driver {
                 dotProductMode(scan);
                 break;
             default:
-                System.out.println("ERROR: UNRECOGNIZED CHOICE. ONLY ENTER A INTEGER, LIKE 2. TRY AGAIN \n");
-                main(args);
-                scan.close();
-                return;
+                System.out.println("\nERROR: UNRECOGNIZED CHOICE. ONLY ENTER AN INTEGER, LIKE 2. TRY AGAIN (ENTER 5 TO END THE PROGRAM) \n");
         }
-        System.out.println("\nTo run again, enter nothing. To stop, enter any characters or close this window");
-        if (scan.nextLine().equals(""))
-            main(args);
+        System.out.println("\nEnter the number for your desired operation: \n(1) Converter, (2) Adder, (3) Cross Product, (4) Dot Product, (5) to END the program");
+        option = scan.nextLine().replace(" ", "");
+        }
         scan.close();
     }
 
