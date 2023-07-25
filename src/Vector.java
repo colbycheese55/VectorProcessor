@@ -76,7 +76,7 @@ public class Vector {
 
         return "\nResults: \n"+
         "Cartesian Coords: "+round(x)+"i + "+round(y)+"j + "+round(z)+"k \n"+
-        "Relative Polar Coords: Magnitude is "+round(r)+"; \u0398 is "+thetaX+", "+thetaY+", "+thetaZ+"\n"+
+        "Relative Polar Coords: Magnitude is "+round(r)+"; \u0398 is "+thetaX+", "+thetaY+", "+thetaZ+" degrees\n"+
         "Unit Vector: "+round(r)+"e, where e is "+round(x/r)+"i + "+round(y/r)+"j + "+round(z/r)+"k";
     }
 
