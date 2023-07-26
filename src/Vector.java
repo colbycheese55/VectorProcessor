@@ -27,6 +27,10 @@ public class Vector {
                 x = values[0]*Math.cos(Math.toRadians(values[1]));
                 y = values[0]*Math.cos(Math.toRadians(values[2]));
                 z = values[0]*Math.cos(Math.toRadians(values[3]));
+                if (Math.abs(Math.abs(values[0]) - getMag()) > Math.abs(0.1 * values[0])) {
+                    System.out.println("\nERROR: ANGLES ARE MATHEMATICALLY INVALID. THIS ENTRY WAS DISREGARDED\n");
+                    x = 0; y = 0; z = 0;
+                }
                 break;
             case "unit": 
                 Vector unitVector = new Vector(values[1], values[2], values[3]);
@@ -105,6 +109,9 @@ public class Vector {
         if ((code.equals("rp") || code.equals("dir") || code.equals("unit")) && !(in.length == 3 || in.length == 4)) {
             System.out.println("\nERROR: INCORRECT NUMBER OF COMPONENTS FOR THIS FORMAT. 3 (2D) OR 4 (3D) ARE EXPECTED. THIS ENTRY WAS DISREGARDED\n");
             return new double[4];
+        }
+        if (code.equals("rp") && in.length == 3) {
+            return new double[]{in[0], in[1], in[2], 90};
         }
         
         return Arrays.copyOf(in, in.length+1);
