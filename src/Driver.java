@@ -70,8 +70,7 @@ public class Driver {
 
         double result = v1.getX()*v2.getX() + v1.getY()*v2.getY() + v1.getZ()*v2.getZ();
         double theta = Math.toDegrees(Math.acos(result/(v1.getMag()*v2.getMag())));
-        System.out.println("Scalar value: "+Vector.round(result));
-        System.out.println("Angle between input vectors: "+Vector.round(theta));
-
+        System.out.println("\nScalar value: "+Vector.round(result));
+        System.out.println("Angle between input vectors: "+Vector.round(theta)+" degrees");
     }
 }
