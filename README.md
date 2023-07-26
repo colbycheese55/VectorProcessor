@@ -32,7 +32,7 @@ The program does not 'install' or save any other files, nor does it access the i
   - `Value 3` is _phi_ (angle between the XY plane and the vector, below the XY plane is negative, range is [-90,90]); optional, will be assumed to be 0 if not included
 - Relative Polar (format code is `rp`)
   - `Value 1` is magnitude
-  - `Values 2,3,4` are _theta_ X, Y, and Z (angle between the respective axis and the vector, valid range is [0,180]); _theta_ Z is optional, will be assumed to be 0 if not included
+  - `Values 2,3,4` are _theta_ X, Y, and Z (angle between the respective axis and the vector, valid range is [0,180]); _theta_ Z is optional, will be assumed to be 90 if not included
 - Unit Vector (format code is `unit`)
   - `Value 1` is magnitude
   - `Values 2,3,4` are the X, Y, and Z components of the unit vector (valid range is [0,1], and the combined magnitude must be 1) Z is optional, will be assumed to be 0 if not included
