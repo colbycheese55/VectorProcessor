@@ -1,29 +1,50 @@
-# VectorProcessor2
+# VectorProcessor3
+## Background
 This project was created throughout my senior year of high school when I was learning Java in AP Computer Science A. Throughout its creation it changed many times; for example, after I learned arrays, I used an array to represent the cartesian components of a vector, which replaced using a single String where each component was comma separated. The motivation behind this project was to solve non-calculus-based physics problems that were common in an engineering class I was taking. 
 
-The ”vector_converter3D” can only convert between different vector formats, but also serves as the framework for the other programs. The “vector_adder3D” can endlessly add vectors, and subtract by entering a negative vector. The “dotcross_calc” program calculates the dot product, the cross product, and the angle between two vectors. There was originally a 2D version for the vector adder and converter, but this became redundant one I created the 3D versions; 2D native support does exist for most vector formats. 
+The code was then rewritten into its current form, after I decided to update and improve it using the Java skills I now possess. The original code (VectorProcessor2) is under the legacy branch. The current version creates a more standardized user experience across operations, its code is infinitely more readable, and errors from user input are handled.  
 
+## Installation
+1. First, install JAVA
+2. Download the jar file
+3. Open the terminal and type `java -jar <filepath of the file>`
+  - Example: `java -jar C:\Users\user\Desktop\VectorProcessor_v3.jar`
 
+The program does not 'install' or save any other files, nor does it access the internet.
 
+## How to use
+1. Upon startup the user will be prompted to choose which operation they wish to conduct (vector converting, adding, cross product, dot product); enter the integer in the parentheses of the prompt to choose that operation. 
+2. Follow the prompts and enter the vector(s) in the formats shown in 'Vector Formats'. 
+  - If an entry is invalid, an error will be printed and the entry will be treated as a 0 / null vector, and the program will continue. This is especially helpful for the 'adder' function.
+3. The operation will then be conducted, and the result will be printed in multiple formats. 
+4. The user is then given a choice to conduct another operation, or to stop by entering `5` 
 
-Supported Vector Formats and Other Notes:
+## Vector Formats
+**Vectors should be entered in the format: ** `<Format Code> <Value 1>, <Value 2>, <Value 3, sometimes optional>, <Value 4, always optional>`
+**Example: ** `cart 5,10,15`
 
-- note: for 2D vectors enter [magnitude z] [e z] [distance z] and [phi] as 0, enter [theta z] as 90
+**Accepted Formats**:
+- Cartesian (format code is `cart`)
+  - `Values 1,2,3` are X, Y, and Z components respectively; Z is optional, and will be assumed to be 0 if not included
+- Absolute Polar (format code is `ap`)
+  - `Value 1` is magnitude
+  - `Value 2` is _theta_ (counterclockwise angle off of the positive X axis, only in the XY plane)
+  - `Value 3` is _phi_ (angle between the XY plane and the vector, below the XY plane is negative, range is [-90,90]); optional, will be assumed to be 0 if not included
+- Relative Polar (format code is `rp`)
+  - `Value 1` is magnitude
+  - `Values 2,3,4` are _theta_ X, Y, and Z (angle between the respective axis and the vector, valid range is [0,180]); _theta_ Z is optional, will be assumed to be 0 if not included
+- Unit Vector (format code is `unit`)
+  - `Value 1` is magnitude
+  - `Values 2,3,4` are the X, Y, and Z components of the unit vector (valid range is [0,1], and the combined magnitude must be 1) Z is optional, will be assumed to be 0 if not included
+- Directional Unit Vector (format code is `dir`)
+  - `Value 1` is magnitude
+  - `Values 2,3,4` are the X, Y, and Z directions the vector is measured on. Z is optional, and will be assumed to be 0 if not included
 
-- Polar Coordinates: [magnitude], [theta x], [theta y], [theta z] ::: ex. 100, 120, 30, 90
+**Additional Entry Guidelines: **
+- all angles are assumed to be in degrees
+- don't put any characters (or spaces) before the format code
+- separate the vector code from the numerical components by at least 1 space
+- any number of spaces, or none at all, can be put between commas
 
-- Cartesian Coordinates: [magnitude x]i + [magnitude y]j + [magnitude z]k ::: ex. 100i+200j+-300k
-
-  -- note: even if it means typing "+-" you must separate values by a plus sign
-
-- Unit Vector: [magnitude]e where e=[e x]i+[e y]j+[e z]k ::: ex. 200e where e=0.6i+0.5j+0.3k
-
-  -- note: even if it means typing "+-" you must separate values by a plus sign
-
-- Theta and Phi: [magnitude], [theta], [phi] ::: ex. 100, 45, 10
-
-- Directional unit vector: [magnitude]; [distance x]; [distance y]; [distance z] ::: ex. 100; 10; -5; 2
-
-- note: all vectors must originate from the same point
-
-- always run the main() method, rather than an individual method
+## License to Reuse
+This source code and any releases may be used for any non-commercial purposes. Please contact me before using the source code, as I'm interested to know where my code travels.
