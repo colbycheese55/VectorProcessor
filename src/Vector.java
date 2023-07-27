@@ -5,7 +5,7 @@ public class Vector {
     private double x, y, z;
 
     public Vector(String in) {
-        String[] contents = in.split("\s", 2);
+        String[] contents = in.trim().split("\s", 2);
         String vectorFormat = contents[0];
         if (contents.length != 2 || vectorFormat.length() == 0) {
             System.out.println("\nERROR: NO FORMAT CODE GIVEN. THIS ENTRY WAS DISREGARDED\n");

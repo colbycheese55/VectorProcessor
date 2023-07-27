@@ -42,7 +42,6 @@ The program does not 'install' or save any other files, nor does it access the i
 
 **Additional Entry Guidelines: **
 - all angles are assumed to be in degrees
-- don't put any characters (or spaces) before the format code
 - separate the vector code from the numerical components by at least 1 space
 - any number of spaces, or none at all, can be put between commas
 
