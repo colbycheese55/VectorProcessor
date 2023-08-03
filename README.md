@@ -5,8 +5,12 @@ This project was created throughout my senior year of high school when I was lea
 The code was then rewritten into its current form, after I decided to update and improve it using the Java skills I now possess. The original code (VectorProcessor2) is under the legacy branch. The current version creates a more standardized user experience across operations, its code is infinitely more readable, and errors from user input are handled.  
 
 ## Installation
-1. First, install JAVA
-2. Download the jar file
+1. First, install JAVA [(here)](https://www.java.com/en/download/)
+**EXE Method (recommended, windows only)**
+2. Download the `.exe` file from the current release
+3. Run the `.exe` file
+**JAR Method**
+2. Download the `.jar` file from the current release
 3. Open the terminal and type `java -jar <filepath of the file>`
   - Example: `java -jar C:\Users\user\Desktop\VectorProcessor_v3.jar`
 
@@ -18,6 +22,7 @@ The program does not 'install' or save any other files, nor does it access the i
   - If an entry is invalid, an error will be printed and the entry will be treated as a 0 / null vector, and the program will continue. This is especially helpful for the 'adder' function.
 3. The operation will then be conducted, and the result will be printed in multiple formats. 
 4. The user is then given a choice to conduct another operation, or to stop by entering `5` 
+  - If using the EXE method, entering `5` will also close the window.
 
 ## Vector Formats
 **Vectors should be entered in the format: ** `<Format Code> <Value 1>, <Value 2>, <Value 3, sometimes optional>, <Value 4, always optional>`
