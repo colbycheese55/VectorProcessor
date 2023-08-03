@@ -5,14 +5,16 @@ This project was created throughout my senior year of high school when I was lea
 The code was then rewritten into its current form, after I decided to update and improve it using the Java skills I now possess. The original code (VectorProcessor2) is under the legacy branch. The current version creates a more standardized user experience across operations, its code is infinitely more readable, and errors from user input are handled.  
 
 ## Installation
-1. First, install JAVA [(here)](https://www.java.com/en/download/)
-**EXE Method (recommended, windows only)**
-2. Download the `.exe` file from the current release
-3. Run the `.exe` file
-**JAR Method**
-2. Download the `.jar` file from the current release
-3. Open the terminal and type `java -jar <filepath of the file>`
-  - Example: `java -jar C:\Users\user\Desktop\VectorProcessor_v3.jar`
+  First, install JAVA [(here)](https://www.java.com/en/download/)
+
+**EXE Method (recommended, windows only)** <br>
+Download the `.exe` file from the current release <br>
+Run the `.exe` file
+
+**JAR Method** <br>
+Download the `.jar` file from the current release <br>
+Open the terminal and type `java -jar <filepath of the file>`
+  - Example: `java -jar C:\Users\user\Desktop\VectorProcessor_v3.0.jar`
 
 The program does not 'install' or save any other files, nor does it access the internet.
 
