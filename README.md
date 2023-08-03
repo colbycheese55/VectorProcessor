@@ -27,8 +27,8 @@ The program does not 'install' or save any other files, nor does it access the i
   - If using the EXE method, entering `5` will also close the window.
 
 ## Vector Formats
-**Vectors should be entered in the format: ** `<Format Code> <Value 1>, <Value 2>, <Value 3, sometimes optional>, <Value 4, always optional>`
-**Example: ** `cart 5,10,15`
+**Vectors should be entered in the format:** `<Format Code> <Value 1>, <Value 2>, <Value 3, sometimes optional>, <Value 4, always optional>` <br>
+**Example:** `cart 5,10,15`
 
 **Accepted Formats**:
 - Cartesian (format code is `cart`)
@@ -47,7 +47,7 @@ The program does not 'install' or save any other files, nor does it access the i
   - `Value 1` is magnitude
   - `Values 2,3,4` are the X, Y, and Z directions the vector is measured on. Z is optional, and will be assumed to be 0 if not included
 
-**Additional Entry Guidelines: **
+**Additional Entry Guidelines:**
 - all angles are assumed to be in degrees
 - separate the vector code from the numerical components by at least 1 space
 - any number of spaces, or none at all, can be put between commas
